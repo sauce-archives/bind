@@ -10,6 +10,11 @@
 - include: configuration.yml
   tags: configuration
 
+- name: test syntax of configuration files
+  shell: named-checkconf -z
+  changed_when: no
+  tags: configuration
+
 - name: test if bind9 process is running
   shell: service bind9 status
   sudo: yes
