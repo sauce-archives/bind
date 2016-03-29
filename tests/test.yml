@@ -7,7 +7,6 @@
 
   vars:
     debug: true
-    playbook_dir_log: '/var/log/named'
 
     bind_default_options: '-4 -u bind'
     bind_named_conf_acl:
