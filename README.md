@@ -54,7 +54,10 @@ Example:
     - hosts: servers
       vars:
         debug: yes
+
         bind_default_options: '-4 -u bind'
+        bind_dir_log: /var/log/named
+
         bind_named_conf_acl:
           trusted: |
             localhost;
@@ -74,17 +77,17 @@ Example:
         bind_named_conf_logging:
           channels:
             update_debug: |
-              file "{{ playbook_dir_log }}/update_debug.log" versions 3 size 100k;
+              file "{{ bind_dir_log }}/update_debug.log" versions 3 size 100k;
               severity debug;
               print-severity  yes;
               print-time      yes;
             security_info: |
-              file "{{ playbook_dir_log }}/security_info.log" versions 1 size 100k;
+              file "{{ bind_dir_log }}/security_info.log" versions 1 size 100k;
               severity info;
               print-severity  yes;
               print-time      yes;
             bind_log: |
-              file "{{ playbook_dir_log }}/bind.log" versions 3 size 1m;
+              file "{{ bind_dir_log }}/bind.log" versions 3 size 1m;
               severity info;
               print-category  yes;
               print-severity  yes;
