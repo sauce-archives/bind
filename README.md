@@ -54,6 +54,47 @@ Example:
     - hosts: servers
       vars:
         debug: yes
+        bind_default_options: '-4 -u bind'
+        bind_named_conf_acl:
+          trusted: |
+            localhost;
+            localnets;
+
+        bind_named_conf_controls: |
+          inet 127.0.0.1 port 953 allow { 127.0.0.1; };
+
+        bind_named_conf_keys:
+          mykey:
+            algorithm: hmac-md5
+            secret: QJc08cnP1xkoF4a/eSZZbw==
+          mykey2:
+            algorithm: hmac-md5
+            secret: QJc08cnP1xkoF4a/eSZZbw==
+
+        bind_named_conf_logging:
+          channels:
+            update_debug: |
+              file "{{ playbook_dir_log }}/update_debug.log" versions 3 size 100k;
+              severity debug;
+              print-severity  yes;
+              print-time      yes;
+            security_info: |
+              file "{{ playbook_dir_log }}/security_info.log" versions 1 size 100k;
+              severity info;
+              print-severity  yes;
+              print-time      yes;
+            bind_log: |
+              file "{{ playbook_dir_log }}/bind.log" versions 3 size 1m;
+              severity info;
+              print-category  yes;
+              print-severity  yes;
+              print-time      yes;
+          categories:
+            default: bind_log
+            lame-servers: 'null'
+            update: update_debug
+            update-security: update_debug
+            security: security_info
 
       roles:
          - role: saucelabs-ansible.bind
