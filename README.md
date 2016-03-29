@@ -14,6 +14,7 @@ Ansible role to setup [BIND (Berkley Internet Naming Daemon)](https://www.isc.or
 
 | Family | Distribution | Version | Test Status |
 |:-:|:-:|:-:|:-:|
+| Debian | Ubuntu  | Precise | [![x86_64](http://img.shields.io/badge/x86_64-passed-006400.svg?style=flat)](#) |
 | Debian | Ubuntu  | Trusty  | [![x86_64](http://img.shields.io/badge/x86_64-passed-006400.svg?style=flat)](#) |
 
 
@@ -25,6 +26,7 @@ Ansible role to setup [BIND (Berkley Internet Naming Daemon)](https://www.isc.or
 ## Role Variables
 
 - **debug**: flag to run debug tasks (default: false).
+- **bind_dir_log**: directory where to store the bind log files.
 - **bind_default_resolvconf**: wether or not you want to run resolvconf.
 - **bind_default_options**: extra parameters to pass to the bind daemon.
 - **bind_named_conf_acl**: content for the `named.conf` `acl` section.
@@ -60,6 +62,7 @@ Example:
 
 ## Tags
 
+- **apparmor**: apparmor configuration tasks.
 - **configuration**: configuration tasks.
 - **debug**: role variables debug task.
 - **installation**: installation tasks.

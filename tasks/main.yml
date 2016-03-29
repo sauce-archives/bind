@@ -18,3 +18,7 @@
 - include: configuration.yml
   tags: configuration
   sudo: yes
+
+- include: apparmor.yml
+  tags: apparmor
+  sudo: yes

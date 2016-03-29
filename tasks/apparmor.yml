@@ -1,0 +1,14 @@
+---
+# file: tasks/apparmor.yml
+#
+# apparmor configuration tasks.
+#
+
+- name: ensure log directory is present in the apparmor configuration
+  lineinfile:
+    dest=/etc/apparmor.d/usr.sbin.named
+    line="  {{ item }} rw,"
+    insertbefore='}'
+  with_items:
+    - "{{ bind_dir_log }}/**"
+    - "{{ bind_dir_log }}/"

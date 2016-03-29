@@ -11,7 +11,6 @@
     owner=root
     group=root
     mode=0644
-  sudo: yes
   notify: restart bind9
 
 - name: ensure integrity of /etc/bind/named.conf.* files
@@ -21,7 +20,6 @@
     owner=root
     group=root
     mode=0644
-  sudo: yes
   with_items:
     - ''
     - '.acl'
@@ -29,4 +27,4 @@
     - '.keys'
     - '.logging'
     - '.options'
-  notify: reload bind9
+  notify: restart bind9

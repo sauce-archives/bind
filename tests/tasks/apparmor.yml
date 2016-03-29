@@ -1,0 +1,15 @@
+---
+# file: tests/tasks/apparmor.yml
+#
+# test apparmor tasks.
+#
+
+- name: apparmor | test if /etc/apparmor.d/usr.sbin.named file is present?
+  shell: test -e /etc/apparmor.d/usr.sbin.named
+  changed_when: no
+
+- name: apparmor | ensure log directory is present in the apparmor configuration
+  shell: "grep '^  {{item}} rw,$' /etc/apparmor.d/usr.sbin.named"
+  with_items:
+    - "{{ bind_dir_log }}/**"
+    - "{{ bind_dir_log }}/"

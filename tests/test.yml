@@ -51,16 +51,6 @@
         update-security: update_debug
         security: security_info
 
-  pre_tasks:
-    - name: ensure log directory is present
-      file:
-        path="{{ playbook_dir_log }}"
-        state=directory
-        owner=bind
-        group=bind
-        mode=0755
-      sudo: yes
-
   roles:
     - role: bind
       tags: bind
