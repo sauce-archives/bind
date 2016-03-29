@@ -1,0 +1,19 @@
+---
+# file: bind/meta/main.yml
+#
+# meta file
+#
+galaxy_info:
+  author: Pedro Salgado
+  description: Role to setup BIND (Berkley Internet Naming Daemon).
+  company: saucelabs.com
+  license: BSD
+  min_ansible_version: 1.9.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+  galaxy_tags:
+    - system
+    - dns
+dependencies: []

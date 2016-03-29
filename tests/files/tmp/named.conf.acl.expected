@@ -1,0 +1,6 @@
+# Ansible managed file, do not edit directly
+
+acl "trusted" {
+    localhost;
+    localnets;
+};

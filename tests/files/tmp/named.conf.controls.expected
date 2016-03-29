@@ -1,0 +1,5 @@
+# Ansible managed file, do not edit directly
+
+controls {
+    inet 127.0.0.1 port 953 allow { 127.0.0.1; };
+};

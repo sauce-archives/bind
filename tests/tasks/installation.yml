@@ -1,0 +1,15 @@
+---
+# file: tests/tasks/installation.yml
+#
+# test installation tasks.
+#
+
+
+- name: installation | test if bind9 and dnsutils package installed?
+  shell: "dpkg-query -W -f='${Status}\n' {{ item }}"
+  register: test
+  changed_when: no
+  failed_when: test.stdout.find('install ok installed') == -1
+  with_items:
+    - bind9
+    - dnsutils

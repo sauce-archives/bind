@@ -1,0 +1,32 @@
+---
+# file: tasks/configuration.yml
+#
+# configuration tasks.
+#
+
+- name: ensure integrity of /etc/default/bind9 file
+  template:
+    src=etc/default/bind9.j2
+    dest=/etc/default/bind9
+    owner=root
+    group=root
+    mode=0644
+  sudo: yes
+  notify: restart bind9
+
+- name: ensure integrity of /etc/bind/named.conf.* files
+  template:
+    src="etc/bind/named.conf{{ item }}.j2"
+    dest="/etc/bind/named.conf{{ item }}"
+    owner=root
+    group=root
+    mode=0644
+  sudo: yes
+  with_items:
+    - ''
+    - '.acl'
+    - '.controls'
+    - '.keys'
+    - '.logging'
+    - '.options'
+  notify: reload bind9

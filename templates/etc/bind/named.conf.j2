@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+// This is the primary configuration file for the BIND DNS server named.
+//
+// Please read /usr/share/doc/bind9/README.Debian.gz for information on the
+// structure of BIND configuration files in Debian, *BEFORE* you customize
+// this configuration file.
+//
+// If you are just adding zones, please do that in /etc/bind/named.conf.local
+
+{% if bind_named_conf_acl is defined %}
+include "/etc/bind/named.conf.acl";
+{% endif %}
+include "/etc/bind/named.conf.options";
+{% if bind_named_conf_keys is defined %}
+include "/etc/bind/named.conf.keys";
+{% endif %}
+{% if bind_named_conf_logging is defined %}
+include "/etc/bind/named.conf.logging";
+{% endif %}
+{% if bind_named_conf_controls is defined %}
+include "/etc/bind/named.conf.controls";
+{% endif %}
+include "/etc/bind/named.conf.default-zones";

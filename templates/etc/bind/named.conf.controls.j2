@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+
+{% if bind_named_conf_controls is defined %}
+controls {
+{%   for line in bind_named_conf_controls.split('\n')[:-1] %}
+    {{ line }}
+{%   endfor %}
+};
+{% endif %}

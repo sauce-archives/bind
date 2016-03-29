@@ -1,0 +1,12 @@
+# Ansible managed file, do not edit directly
+
+key "mykey" {
+    algorithm hmac-md5;
+    secret "QJc08cnP1xkoF4a/eSZZbw==";
+};
+
+key "mykey2" {
+    algorithm hmac-md5;
+    secret "QJc08cnP1xkoF4a/eSZZbw==";
+};
+

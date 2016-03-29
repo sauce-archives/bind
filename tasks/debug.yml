@@ -1,0 +1,16 @@
+---
+# file: tasks/debug.yml
+#
+# debug tasks.
+#
+
+- debug:
+    var="{{ item }}"
+  when: "{{ item }} is defined"
+  with_items:
+    - bind_default_resolvconf
+    - bind_default_options
+    - bind_named_conf_acl
+    - bind_named_conf_keys
+    - bind_named_conf_logging
+    - bind_named_conf_controls

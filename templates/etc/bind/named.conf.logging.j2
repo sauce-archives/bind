@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+{% if bind_named_conf_logging is defined and bind_named_conf_logging.channels is defined %}
+logging {
+{%   for channel, content in bind_named_conf_logging.channels.iteritems() | sort %}
+    channel {{ channel }} {
+{%    for line in content.split('\n')[:-1] %}
+        {{ line }}
+{%     endfor %}
+    };
+{%   endfor %}
+
+{%   for category, channel in bind_named_conf_logging.categories.iteritems() | sort %}
+    category {{ category }} { {{ channel }}; };
+{%   endfor %}};
+{% endif %}

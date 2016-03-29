@@ -1,0 +1,13 @@
+---
+# file: tasks/installation.yml
+#
+# installation tasks.
+#
+
+- name: installation | ensure bind9 and dnsutils are installed
+  apt:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - bind9
+    - dnsutils

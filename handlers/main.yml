@@ -1,0 +1,29 @@
+---
+# file: bind/handlers/main.yml
+#
+# handlers file
+#
+
+- name: reload bind9
+  service:
+    name=bind9
+    state=reloaded
+  sudo: yes
+
+- name: restart bind9
+  service:
+    name=bind9
+    state=restarted
+  sudo: yes
+
+- name: start bind9
+  service:
+    name=bind9
+    state=started
+  sudo: yes
+
+- name: stop bind9
+  service:
+    name=bind9
+    state=stopped
+  sudo: yes
