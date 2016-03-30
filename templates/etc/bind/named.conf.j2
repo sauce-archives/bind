@@ -21,3 +21,6 @@ include "/etc/bind/named.conf.logging";
 include "/etc/bind/named.conf.controls";
 {% endif %}
 include "/etc/bind/named.conf.default-zones";
+{% if bind_zones is defined %}
+include "/etc/bind/named.conf.local";
+{% endif %}

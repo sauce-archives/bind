@@ -24,10 +24,11 @@
     - '.acl'
     - '.controls'
     - '.keys'
+    - '.local'
     - '.logging'
     - '.options'
 
-- name: configuration | copy test resources
+- name: configuration | copy bind configuration test resources
   copy:
     src="tmp/named.conf{{ item }}.expected"
     dest="/tmp/named.conf{{ item }}.expected"
@@ -38,6 +39,7 @@
     - '.acl'
     - '.controls'
     - '.keys'
+    - '.local'
     - '.logging'
     - '.options'
 
@@ -49,5 +51,28 @@
     - '.acl'
     - '.controls'
     - '.keys'
+    - '.local'
     - '.logging'
     - '.options'
+
+- name: configuration | test if /var/cache/bind/db.example.com.zone exists
+  shell: "test -e {{ bind_dir_cache }}/db.{{ item }}.zone"
+  changed_when: no
+  with_items:
+    - 'example.com'
+
+- name: configuration | copy zone database test resources
+  copy:
+    src="tmp/db.{{ item }}.zone.expected"
+    dest="/tmp/db.{{ item }}.zone.expected"
+  sudo: yes
+  changed_when: no
+  with_items:
+    - 'example.com'
+
+
+- name: configuration | test bind zone database file generation
+  shell: "diff {{ bind_dir_cache }}/db.{{ item }}.zone /tmp/db.{{ item }}.zone.expected"
+  changed_when: no
+  with_items:
+    - 'example.com'

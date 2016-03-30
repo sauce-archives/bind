@@ -13,3 +13,4 @@ include "/etc/bind/named.conf.keys";
 include "/etc/bind/named.conf.logging";
 include "/etc/bind/named.conf.controls";
 include "/etc/bind/named.conf.default-zones";
+include "/etc/bind/named.conf.local";

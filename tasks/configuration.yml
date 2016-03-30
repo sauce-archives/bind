@@ -25,6 +25,16 @@
     - '.acl'
     - '.controls'
     - '.keys'
+    - '.local'
     - '.logging'
     - '.options'
   notify: restart bind9
+
+- name: generate custom zone databases
+  template:
+    src=var/cache/bind/db.name.zone.j2
+    dest="{{ bind_dir_cache }}/db.{{ item.key }}.zone"
+    owner=bind
+    group=bind
+    mode=0644
+  with_dict: "{{ bind_zone_databases }}"

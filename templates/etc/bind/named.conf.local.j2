@@ -1,1 +1,18 @@
 # {{ ansible_managed }}
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+{% if bind_zones is defined %}
+{%   for zone, content in bind_zones.iteritems() | sort %}
+zone "{{ zone }}" {
+{%     for param, value in content.iteritems() | sort %}
+    {{ param }} {{ value }}
+{%     endfor %}
+}
+{%   endfor %}
+{% endif %}
