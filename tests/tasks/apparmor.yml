@@ -8,8 +8,14 @@
   shell: test -e /etc/apparmor.d/usr.sbin.named
   changed_when: no
 
-- name: apparmor | ensure log directory is present in the apparmor configuration
-  shell: "grep '^  {{item}} rw,$' /etc/apparmor.d/usr.sbin.named"
+- name: apparmor | ensure cache directory is present in the apparmor configuration
+  shell: "grep '^  {{item}},$' /etc/apparmor.d/usr.sbin.named"
   with_items:
-    - "{{ bind_dir_log }}/**"
-    - "{{ bind_dir_log }}/"
+    - "{{ bind_dir_cache }}/** lrw"
+    - "{{ bind_dir_cache }}/ rw"
+
+- name: apparmor | ensure log directory is present in the apparmor configuration
+  shell: "grep '^  {{item}},$' /etc/apparmor.d/usr.sbin.named"
+  with_items:
+    - "{{ bind_dir_log }}/** rw"
+    - "{{ bind_dir_log }}/ rw"

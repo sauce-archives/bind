@@ -7,10 +7,11 @@
 bind_default_resolvconf: 'no'
 bind_default_options: '-u bind'
 
+bind_dir_cache: /var/cache/bind
 bind_dir_log: /var/log/named
 
 bind_named_conf_options: |
-  directory "/var/cache/bind";
+  directory "{{ bind_dir_cache }}";
   dnssec-validation auto;
   auth-nxdomain no;
   listen-on-v6 { any; };

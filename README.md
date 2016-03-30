@@ -26,6 +26,7 @@ Ansible role to setup [BIND (Berkley Internet Naming Daemon)](https://www.isc.or
 ## Role Variables
 
 - **debug**: flag to run debug tasks (default: false).
+- **bind_dir_cache**: directory where to store the bind zone files.
 - **bind_dir_log**: directory where to store the bind log files.
 - **bind_default_resolvconf**: wether or not you want to run resolvconf.
 - **bind_default_options**: extra parameters to pass to the bind daemon.

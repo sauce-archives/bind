@@ -4,6 +4,15 @@
 # apparmor configuration tasks.
 #
 
+- name: ensure cache directory is present in the apparmor configuration
+  lineinfile:
+    dest=/etc/apparmor.d/usr.sbin.named
+    line="  {{ item }},"
+    insertbefore='}'
+  with_items:
+    - "{{ bind_dir_cache }}/** lrw"
+    - "{{ bind_dir_cache }}/ rw"
+
 - name: ensure log directory is present in the apparmor configuration
   lineinfile:
     dest=/etc/apparmor.d/usr.sbin.named
