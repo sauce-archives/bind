@@ -12,7 +12,7 @@
     - bind9
     - dnsutils
 
-- name: ensure log directory is present
+- name: installation | ensure log directory is present
   file:
     path="{{ bind_dir_log }}"
     state=directory
