@@ -57,6 +57,7 @@ Example:
         debug: yes
 
         bind_default_options: '-4 -u bind'
+        bind_dir_cache: /var/cache/bind
         bind_dir_log: /var/log/named
 
         bind_named_conf_acl:
