@@ -1,4 +1,4 @@
-# Ansible managed file, do not edit directly
+// Ansible managed file, do not edit directly
 
 key "mykey" {
     algorithm hmac-md5;

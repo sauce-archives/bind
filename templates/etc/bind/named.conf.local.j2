@@ -1,4 +1,4 @@
-# {{ ansible_managed }}
+// {{ ansible_managed }}
 //
 // Do any local configuration here
 //
@@ -11,8 +11,8 @@
 {%   for zone, content in bind_zones.iteritems() | sort %}
 zone "{{ zone }}" {
 {%     for param, value in content.iteritems() | sort %}
-    {{ param }} {{ value }}
+    {{ param }} {{ value }};
 {%     endfor %}
-}
+};
 {%   endfor %}
 {% endif %}

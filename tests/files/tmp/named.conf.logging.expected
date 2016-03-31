@@ -1,4 +1,4 @@
-# Ansible managed file, do not edit directly
+// Ansible managed file, do not edit directly
 
 logging {
     channel bind_log {

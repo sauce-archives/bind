@@ -1,4 +1,4 @@
-# Ansible managed file, do not edit directly
+// Ansible managed file, do not edit directly
 //
 // Do any local configuration here
 //
@@ -8,6 +8,6 @@
 //include "/etc/bind/zones.rfc1918";
 
 zone "example.com" {
-    file "/var/cache/bind/db.example.com.zone"
-    type master
-}
+    file "/var/cache/bind/db.example.com.zone";
+    type master;
+};

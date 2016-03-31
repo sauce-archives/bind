@@ -1,4 +1,4 @@
-# Ansible managed file, do not edit directly
+// Ansible managed file, do not edit directly
 // This is the primary configuration file for the BIND DNS server named.
 //
 // Please read /usr/share/doc/bind9/README.Debian.gz for information on the
