@@ -20,7 +20,7 @@ Ansible role to setup [BIND (Berkley Internet Naming Daemon)](https://www.isc.or
 
 ## Requirements
 
-- ansible >= 1.9.4
+- ansible >= 1.9.5
 
 
 ## Role Variables
