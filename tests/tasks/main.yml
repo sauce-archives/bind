@@ -15,6 +15,11 @@
   changed_when: no
   tags: configuration
 
+- name: test syntax of example.com configuration file
+  shell: named-checkzone -i full example.com /var/cache/bind/db.example.com.zone
+  changed_when: no
+  tags: configuration
+
 - name: test if bind9 process is running
   shell: service bind9 status
   sudo: yes

@@ -53,6 +53,29 @@
         update-security: update_debug
         security: security_info
 
+    bind_zones:
+      example.com:
+        type: master
+        file: "\"{{ bind_dir_cache }}/db.example.com.zone\""
+
+    bind_zone_databases:
+        example.com:
+          directives:
+            ORIGIN: example.com.
+            TTL: 3600
+          resource_records:
+            - { name: 'example.com.', class: 'IN', type: 'SOA', data: 'sid.example.com. root.example.com. ( 2007120710 1d 2h 4w 1h )' }
+
+            - { name: '@', class: 'IN', type: 'NS', data: 'sid.example.com.' }
+            - { name: '@', class: 'IN', type: 'MX', data: '10 sid.example.com.' }
+
+            - { name: 'sid', class: 'IN', type: 'A', data: "192.168.0.1" }
+            - { name: 'etch', class: 'IN', type: 'A', data: "192.168.0.2" }
+
+            - { name: 'pop', class: 'IN', type: 'CNAME', data: 'sid' }
+            - { name: 'www', class: 'IN', type: 'CNAME', data: 'sid' }
+            - { name: 'mail', class: 'IN', type: 'CNAME', data: 'sid' }
+
   roles:
     - role: bind
       tags: bind
