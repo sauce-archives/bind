@@ -4,7 +4,7 @@
 # configuration tasks.
 #
 
-- name: ensure integrity of /etc/default/bind9 file
+- name: configuration | ensure integrity of /etc/default/bind9 file
   template:
     src=etc/default/bind9.j2
     dest=/etc/default/bind9
@@ -13,7 +13,7 @@
     mode=0644
   notify: restart bind9
 
-- name: ensure integrity of /etc/bind/named.conf.* files
+- name: configuration | ensure integrity of /etc/bind/named.conf.* files
   template:
     src="etc/bind/named.conf{{ item }}.j2"
     dest="/etc/bind/named.conf{{ item }}"
@@ -30,7 +30,7 @@
     - '.options'
   notify: restart bind9
 
-- name: generate custom zone databases
+- name: configuration | generate custom zone databases
   template:
     src=var/cache/bind/db.name.zone.j2
     dest="{{ bind_dir_cache }}/db.{{ item.key }}.zone"
