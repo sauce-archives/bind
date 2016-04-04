@@ -1,7 +1,7 @@
 // {{ ansible_managed }}
 
 options {
-{% for line in bind_named_conf_options.split('\n')[:-1] | sort %}
+{% for line in bind_named_conf_options.split('\n')| sort %}
     {{ line }}
 {% endfor %}
 };

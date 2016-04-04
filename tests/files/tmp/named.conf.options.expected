@@ -1,6 +1,7 @@
 // Ansible managed file, do not edit directly
 
 options {
+    
     auth-nxdomain no;
     directory "/var/cache/bind";
     dnssec-validation auto;
