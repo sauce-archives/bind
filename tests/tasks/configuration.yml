@@ -44,7 +44,7 @@
     - '.options'
 
 - name: configuration | test named.conf template generation
-  shell: "diff /etc/bind/named.conf{{ item }} /tmp/named.conf{{ item }}.expected"
+  shell: "diff -w /etc/bind/named.conf{{ item }} /tmp/named.conf{{ item }}.expected"
   changed_when: no
   with_items:
     - ''
@@ -72,7 +72,7 @@
 
 
 - name: configuration | test bind zone database file generation
-  shell: "diff {{ bind_dir_cache }}/db.{{ item }}.zone /tmp/db.{{ item }}.zone.expected"
+  shell: "diff -w {{ bind_dir_cache }}/db.{{ item }}.zone /tmp/db.{{ item }}.zone.expected"
   changed_when: no
   with_items:
     - 'example.com'
