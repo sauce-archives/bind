@@ -4,7 +4,7 @@
 logging {
 {%   for channel, content in bind_named_conf_logging.channels.iteritems() | sort %}
     channel {{ channel }} {
-{%    for line in content.split('\n')[:-1] %}
+{%    for line in content.split('\n') %}
         {{ line }}
 {%     endfor %}
     };
