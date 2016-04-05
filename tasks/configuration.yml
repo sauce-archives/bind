@@ -38,3 +38,5 @@
     group=bind
     mode=0644
   with_dict: "{{ bind_zone_databases }}"
+  notify: restart bind9
+
