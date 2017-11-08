@@ -100,6 +100,9 @@ Example:
             update: update_debug
             update-security: update_debug
             security: security_info
+  
+        bind_local_includes: |
+          include: "\"{{ bind_dir_cache }}/named.local.includes\""
 
         bind_zones:
           example.com:
