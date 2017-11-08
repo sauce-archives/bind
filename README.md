@@ -103,7 +103,7 @@ Example:
             security: security_info
   
         bind_local_includes: |
-          include: "\"{{ bind_dir_cache }}/named.local.includes\""
+          include: "\"/etc/bind/named.local.includes\""
 
         bind_zones:
           example.com:
