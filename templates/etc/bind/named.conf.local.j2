@@ -8,7 +8,7 @@
 //include "/etc/bind/zones.rfc1918";
 
 {% if bind_local_includes is defined %}
-{%   for content in bind_named_conf_acl.iteritems() %}
+{%   for content in bind_local_includes.iteritems() %}
   include:  "{{ content }}"; 
 {%   endfor %}
 {% endif %}
