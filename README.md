@@ -30,6 +30,7 @@ Ansible role to setup [BIND (Berkley Internet Naming Daemon)](https://www.isc.or
 - **bind_dir_log**: directory where to store the bind log files.
 - **bind_default_resolvconf**: wether or not you want to run resolvconf.
 - **bind_default_options**: extra parameters to pass to the bind daemon.
+- **bind_local_includes**: any includes for `named.conf.local`.
 - **bind_named_conf_acl**: content for the `named.conf` `acl` section.
 - **bind_named_conf_controls**: content for the `named.conf` `controls` section.
 - **bind_named_conf_keys**: keys for the `named.conf` `keys` section
@@ -100,6 +101,9 @@ Example:
             update: update_debug
             update-security: update_debug
             security: security_info
+  
+        bind_local_includes: 
+          - /etc/bind/named.local.includes
 
         bind_zones:
           example.com:

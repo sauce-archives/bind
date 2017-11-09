@@ -7,6 +7,10 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+{%   for content in bind_local_includes if bind_local_includes is defined %}
+  include: "{{ content }}"; 
+{%   endfor %}
+
 {% if bind_zones is defined %}
 {%   for zone, content in bind_zones.iteritems() | sort %}
 zone "{{ zone }}" {
