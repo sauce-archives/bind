@@ -102,8 +102,8 @@ Example:
             update-security: update_debug
             security: security_info
   
-        bind_local_includes: |
-          /etc/bind/named.local.includes
+        bind_local_includes: 
+          - /etc/bind/named.local.includes
 
         bind_zones:
           example.com:
