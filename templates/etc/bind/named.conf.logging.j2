@@ -11,6 +11,11 @@ logging {
 {%   endfor %}
 
 {%   for category, channel in bind_named_conf_logging.categories.iteritems() | sort %}
-    category {{ category }} { {{ channel }}; };
-{%   endfor %}};
+    {# handle the old format #}
+    {%- if channel is string %}
+        category {{ category }} { {{ channel }}; };
+    {# handle the new sequence format #}
+    {%- elif channel is sequence %}
+        category {{ category }} { {{ channel | join('; ')}}; };
+    {%- endif %}{%   endfor %}};
 {% endif %}
