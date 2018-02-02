@@ -10,14 +10,14 @@ logging {
     };
 {%   endfor %}
 
-{%-   for category, channel in bind_named_conf_logging.categories.iteritems() %}
-   {#- Old Style #}
-   {%- if channel is string %}
+{%   for category, channel in bind_named_conf_logging.categories.iteritems() %}
+   {# Old Style #}
+   {% if channel is string %}
        category {{ category }} { {{ channel }}; };
-   {#- New Style #}
-   {%- elif channel is sequence %}
+   {# New Style #}
+   {% elif channel is sequence %}
        category {{ category }} { {{ channel | join('; ')}}; };
-   {%- endif %}
-{%-   endfor %}
+   {% endif %}
+{%   endfor %}
 }
-{%- endif %}
+{% endif %}
