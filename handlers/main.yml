@@ -8,22 +8,22 @@
   service:
     name=bind9
     state=reloaded
-  sudo: yes
+  become: yes
 
 - name: restart bind9
   service:
     name=bind9
     state=restarted
-  sudo: yes
+  become: yes
 
 - name: start bind9
   service:
     name=bind9
     state=started
-  sudo: yes
+  become: yes
 
 - name: stop bind9
   service:
     name=bind9
     state=stopped
-  sudo: yes
+  become: yes

@@ -13,12 +13,12 @@
 
 - include: installation.yml
   tags: installation
-  sudo: yes
+  become: yes
 
 - include: configuration.yml
   tags: configuration
-  sudo: yes
+  become: yes
 
 - include: apparmor.yml
   tags: apparmor
-  sudo: yes
+  become: yes
