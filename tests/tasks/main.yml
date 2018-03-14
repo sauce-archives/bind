@@ -22,7 +22,7 @@
 
 - name: test if bind9 process is running
   shell: service bind9 status
-  sudo: yes
+  become: yes
   register: test
   changed_when: no
   failed_when: test.stdout.find('bind9 is running') == -1
