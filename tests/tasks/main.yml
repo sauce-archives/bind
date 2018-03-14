@@ -4,10 +4,10 @@
 # Test tasks to verify role execution.
 #
 
-- include: installation.yml
+- import_tasks: installation.yml
   tags: installation
 
-- include: configuration.yml
+- import_tasks: configuration.yml
   tags: configuration
 
 - name: test syntax of configuration files

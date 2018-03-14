@@ -4,21 +4,21 @@
 # tasks file
 #
 
-- include: debug.yml
+- import_tasks: debug.yml
   when: debug | default(false)
   tags: debug
 
-- include: validation.yml
+- import_tasks: validation.yml
   tags: validation
 
-- include: installation.yml
+- import_tasks: installation.yml
   tags: installation
   become: yes
 
-- include: configuration.yml
+- import_tasks: configuration.yml
   tags: configuration
   become: yes
 
-- include: apparmor.yml
+- import_tasks: apparmor.yml
   tags: apparmor
   become: yes
