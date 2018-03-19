@@ -1,7 +1,7 @@
 // {{ ansible_managed }}
 
 options {
-{% for line in bind_named_conf_options.split('\n')| sort %}
+{% for line in bind_named_conf_options.split('\n') | reject("equalto", "") | sort %}
     {{ line }}
 {% endfor %}
 };

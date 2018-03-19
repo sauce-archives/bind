@@ -32,7 +32,7 @@
   copy:
     src="tmp/named.conf{{ item }}.expected"
     dest="/tmp/named.conf{{ item }}.expected"
-  sudo: yes
+  become: yes
   changed_when: no
   with_items:
     - ''
@@ -65,7 +65,7 @@
   copy:
     src="tmp/db.{{ item }}.zone.expected"
     dest="/tmp/db.{{ item }}.zone.expected"
-  sudo: yes
+  become: yes
   changed_when: no
   with_items:
     - 'example.com'

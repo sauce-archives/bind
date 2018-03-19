@@ -4,10 +4,10 @@
 # Test tasks to verify role execution.
 #
 
-- include: installation.yml
+- import_tasks: installation.yml
   tags: installation
 
-- include: configuration.yml
+- import_tasks: configuration.yml
   tags: configuration
 
 - name: test syntax of configuration files
@@ -22,7 +22,7 @@
 
 - name: test if bind9 process is running
   shell: service bind9 status
-  sudo: yes
+  become: yes
   register: test
   changed_when: no
   failed_when: test.stdout.find('bind9 is running') == -1

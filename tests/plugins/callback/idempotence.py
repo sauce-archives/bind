@@ -6,7 +6,7 @@ import sys
 import os
 
 from ansible import constants as C
-from ansible.constants import mk_boolean
+from ansible.module_utils.parsing.convert_bool import boolean
 
 try:
     from ansible.plugins.callback import CallbackBase
@@ -27,7 +27,7 @@ class CallbackModule(parent):
 
     def __init__(self):
         self.playbook = None
-        self.enabled = mk_boolean(os.getenv(VAR_IDEMPOTENCE, 'no'))
+        self.enabled = boolean(os.getenv(VAR_IDEMPOTENCE, 'no'))
 
         super(CallbackModule, self).__init__()
 

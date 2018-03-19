@@ -1,12 +1,12 @@
 ; {{ ansible_managed }}
 
 {% if 'directives' in item.value %}
-{%   for directive, value in item.value.directives.iteritems() %}
+{%   for directive, value in item.value.directives.iteritems() | sort %}
 ${{ directive }} {{ value }}
 {%   endfor %}
 {% endif %}
 {% if 'resource_records' in item.value %}
-{%   for record in item.value.resource_records %}
+{%   for record in item.value.resource_records | sort(attribute='type', reverse = True) %}
 {%     if 'name' in record %}{{ (record.name|string).ljust(25) }}{% endif %}    {% if 'ttl' in record %}{{ (record.ttl|string).ljust(5) }}{% endif %}    {% if 'class' in record %}{{ (record.class|string).ljust(3) }}{% endif %}    {% if 'type' in record %}{{ (record.type|string).ljust(10) }}{% endif %}    {% if 'data' in record %}{{ record.data }}{% endif %}
 
 {%   endfor %}
