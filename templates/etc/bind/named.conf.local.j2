@@ -11,8 +11,8 @@
 {%   for content in bind_local_includes %}
 include "{{ content }}";
 {%   endfor %}
-{% endif %}
 
+{% endif %}
 {% if bind_zones is defined %}
 {%   for zone, content in bind_zones.iteritems() | sort %}
 zone "{{ zone }}" {
