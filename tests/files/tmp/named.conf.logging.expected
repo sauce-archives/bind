@@ -7,21 +7,18 @@ logging {
         print-category  yes;
         print-severity  yes;
         print-time      yes;
-        
     };
     channel security_info {
         file "/var/log/named/security_info.log" versions 1 size 100k;
         severity info;
         print-severity  yes;
         print-time      yes;
-        
     };
     channel update_debug {
         file "/var/log/named/update_debug.log" versions 3 size 100k;
         severity debug;
         print-severity  yes;
         print-time      yes;
-        
     };
 
     category default { bind_log; };

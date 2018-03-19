@@ -2,15 +2,15 @@
 
 {% if bind_named_conf_logging is defined and bind_named_conf_logging.channels is defined %}
 logging {
-{%   for channel, content in bind_named_conf_logging.channels.iteritems() | sort %}
+{% for channel, content in bind_named_conf_logging.channels.iteritems() | reject("equalto", "") | sort %}
     channel {{ channel }} {
-{%    for line in content.split('\n') %}
+{% for line in content.split('\n') | reject("equalto", "") %}
         {{ line }}
-{%     endfor %}
+{% endfor %}
     };
-{%   endfor %}
+{% endfor %}
 
-{%   for category, channel in bind_named_conf_logging.categories.iteritems() %}
+{% for category, channel in bind_named_conf_logging.categories.iteritems() %}
 {# Old Style #}
 {% if channel is string %}
     category {{ category }} { {{ channel }}; };
@@ -18,6 +18,6 @@ logging {
 {% elif channel is sequence %}
     category {{ category }} { {{ channel | join('; ')}}; };
 {% endif %}
-{%   endfor %}
+{% endfor %}
 };
 {% endif %}
