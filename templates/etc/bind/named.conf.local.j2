@@ -9,7 +9,7 @@
 
 {% if bind_local_includes is defined %}
 {%   for content in bind_local_includes %}
-  include "{{ content }}"; 
+include "{{ content }}";
 {%   endfor %}
 {% endif %}
 
