@@ -4,13 +4,13 @@
 logging {
 {% for channel, content in bind_named_conf_logging.channels.iteritems() | reject("equalto", "") | sort %}
     channel {{ channel }} {
-{% for line in content.split('\n') | reject("equalto", "") %}
+{% for line in content.split('\n') | reject("equalto", "") | sort %}
         {{ line }}
 {% endfor %}
     };
 {% endfor %}
 
-{% for category, channel in bind_named_conf_logging.categories.iteritems() %}
+{% for category, channel in bind_named_conf_logging.categories.iteritems() | sort %}
 {# Old Style #}
 {% if channel is string %}
     category {{ category }} { {{ channel }}; };
