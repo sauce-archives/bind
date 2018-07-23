@@ -28,6 +28,7 @@
     - '.local'
     - '.logging'
     - '.options'
+    - '.zones'
   notify: restart bind9
 
 - name: configuration | generate custom zone databases
