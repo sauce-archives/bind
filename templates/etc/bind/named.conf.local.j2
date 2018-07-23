@@ -16,8 +16,8 @@
 {% if bind_views is defined %}
 {% for view, content in bind_views.iteritems() |sort %}
 view "{{ view }}" {
-{% for param,value in content.iteritems() | sort %}
-{{ param }} {{ value }};
+{% for param,value in content.options.iteritems() | sort %}
+ {{ param }} {{ value }};
 {% endfor %}
 };
 {% endfor %}
