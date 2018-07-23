@@ -10,9 +10,6 @@
 {% if bind_named_conf_acl is defined %}
 include "/etc/bind/named.conf.acl";
 {% endif %}
-{% if bind_named_conf_views is defined %}
-include "/etc/bind/named.conf.views";
-{% endif %}
 include "/etc/bind/named.conf.options";
 {% if bind_named_conf_keys is defined %}
 include "/etc/bind/named.conf.keys";
