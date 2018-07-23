@@ -19,7 +19,7 @@ view "{{ view }}" {
 {%  for param,value in content.options.iteritems() | sort %}
  {{ param }} {{ value }};
 {%  endfor %}
-{% for zone,content in content.zone.iteritems() | sort %}
+{% for zone,content in content.zones.iteritems() | sort %}
   zone "{{ zone }}" {
 {   for param,value in content.iteritems() | sort %}
   {{ param }} {{ value }};
