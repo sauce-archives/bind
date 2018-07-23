@@ -1,0 +1,11 @@
+// {{ ansible_managed }}
+
+{% if bind_named_conf_views is defined %}
+{%   for key, content in bind_named_conf_views.iteritems() %}
+acl "{{ key }}" {
+{%     for line in content.split('\n')[:-1] %}
+    {{ line }}
+{%     endfor %}
+{%   endfor %}
+};
+{% endif %}
