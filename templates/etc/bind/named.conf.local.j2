@@ -19,6 +19,7 @@ view "{{ view }}" {
 {%  for param,value in content.options.iteritems() | sort %}
  {{ param }} {{ value }};
 {%  endfor %}
+{% if content.zones is defined %}
 {% for zone,content in content.zones.iteritems() | sort %}
  zone "{{ zone }}" {
 {%   for param,value in content.iteritems() | sort %}
@@ -27,6 +28,7 @@ view "{{ view }}" {
   };
 {%  endfor %}
 };
+{% endif %}
 {% endfor %}
 {% endif %}
 
