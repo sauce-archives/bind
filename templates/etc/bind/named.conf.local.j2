@@ -23,6 +23,7 @@ view "{{ view }}" {
   zone "{{ zone }}" {
 {%   for param,value in content.iteritems() | sort %}
   {{ param }} {{ value }};
+{%   endfor %}
 };
 {%  endfor %}
 };
