@@ -23,12 +23,11 @@ view "{{ view }}" {
 {% for zone,content in content.zones.iteritems() | sort %}
  zone "{{ zone }}" {
 {%   for param,value in content.iteritems() | sort %}
- {{ param }} {{ value }};
+   {{ param }} {{ value }};
 {%   endfor %}
   };
 {%  endfor %}
 
-};
 {% endif %}
 };
 {% endfor %}
