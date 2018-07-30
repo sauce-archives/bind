@@ -20,7 +20,9 @@ include "/etc/bind/named.conf.logging";
 {% if bind_named_conf_controls is defined %}
 include "/etc/bind/named.conf.controls";
 {% endif %}
+{% if bind_views is not defined %}
 include "/etc/bind/named.conf.default-zones";
+{% endif %}
 {% if bind_zones is defined %}
 include "/etc/bind/named.conf.local";
 {% endif %}

@@ -1,0 +1,11 @@
+{% if bind_zones is defined and bind_views is defined %}
+include "/etc/bind/named.conf.default-zones";
+include "/etc/bind/named.conf.revzones";
+{%   for zone, content in bind_zones.iteritems() | sort %}
+zone "{{ zone }}" {
+{%     for param, value in content.iteritems() | sort %}
+    {{ param }} {{ value }};
+{%     endfor %}
+};
+{%   endfor %}
+{% endif %}

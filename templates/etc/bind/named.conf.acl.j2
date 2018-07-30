@@ -6,6 +6,6 @@ acl "{{ key }}" {
 {%     for line in content.split('\n')[:-1] %}
     {{ line }}
 {%     endfor %}
-{%   endfor %}
 };
+{%   endfor %}
 {% endif %}
