@@ -1,7 +1,7 @@
 // {{ ansible_managed }}
 
 {% if bind_named_conf_acl is defined %}
-{%   for key, content in bind_named_conf_acl.iteritems() %}
+{%   for key, content in bind_named_conf_acl.items() %}
 acl "{{ key }}" {
 {%     for line in content.split('\n')[:-1] %}
     {{ line }}
