@@ -1,7 +1,7 @@
 // {{ ansible_managed }}
 
 {% if bind_named_conf_keys is defined %}
-{%   for key_name, key in bind_named_conf_keys.iteritems() | sort %}
+{%   for key_name, key in bind_named_conf_keys.items() | sort %}
 key "{{ key_name }}" {
     algorithm {{ key['algorithm'] }};
     secret "{{ key['secret'] }}";

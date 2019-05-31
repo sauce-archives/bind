@@ -1,7 +1,7 @@
 ; {{ ansible_managed }}
 
 {% if 'directives' in item.value %}
-{%   for directive, value in item.value.directives.iteritems() %}
+{%   for directive, value in item.value.directives.items() %}
 ${{ directive }} {{ value }}
 {%   endfor %}
 {% endif %}

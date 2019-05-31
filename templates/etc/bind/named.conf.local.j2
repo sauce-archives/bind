@@ -14,15 +14,15 @@
 {% endif %}
 
 {% if bind_views is defined %}
-{% for view, content in bind_views.iteritems() |sort %}
+{% for view, content in bind_views.items() |sort %}
 view "{{ view }}" {
-{%  for param,value in content.options.iteritems() | sort %}
+{%  for param,value in content.options.items() | sort %}
  {{ param }} {{ value }};
 {%  endfor %}
 {% if content.zones is defined %}
-{% for zone,content in content.zones.iteritems() | sort %}
+{% for zone,content in content.zones.items() | sort %}
  zone "{{ zone }}" {
-{%   for param,value in content.iteritems() | sort %}
+{%   for param,value in content.items() | sort %}
    {{ param }} {{ value }};
 {%   endfor %}
   };
@@ -34,9 +34,9 @@ view "{{ view }}" {
 {% endif %}
 
 {% if bind_zones is defined and bind_views is not defined %}
-{%   for zone, content in bind_zones.iteritems() | sort %}
+{%   for zone, content in bind_zones.items() | sort %}
 zone "{{ zone }}" {
-{%     for param, value in content.iteritems() | sort %}
+{%     for param, value in content.items() | sort %}
     {{ param }} {{ value }};
 {%     endfor %}
 };
